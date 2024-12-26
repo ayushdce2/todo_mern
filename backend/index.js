@@ -1,16 +1,27 @@
-const express = require("express");
-const app = express();
-const mongoose = require("mongoose");
+const express = require("express"); //require
+const app = express(); //initialize
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const AuthRouter = require("./Routes/AuthRouter");
+const ProductRouter = require("./Routes/ProductRouter");
 
-const My_Mongo_Url = "mongodb+srv://ayushdce2:8445315561Aa@cluster0.8kkxg.mongodb.net/todo_mern?retryWrites=true&w=majority&appName=Cluster0";
-mongoose.connect(My_Mongo_Url)
-.then((response)=>{console.log("Connected to empMgmtD"); db_status="connected DB"})
-.catch((error)=>{console.log(error,"error NOT connected to empMgmtD"); db_status="NoT connected DB"});
+require("dotenv").config();
+require('./Models/db');
 
-app.get("/",(req,res)=>{
-    res.send("backend Connected  . . . . .  .");
-});
+const PORT = process.env.PORT || 8080;
 
-app.listen(8080,()=>{
-    console.log("Server is running on port 8080");
+app.get('/',(req,res)=>{
+    res.send('SERVER RUNNING NOW');
+})
+
+
+
+
+app.use(bodyParser.json());
+app.use(cors());
+app.use("/auth", AuthRouter);
+app.use("/products", ProductRouter);
+
+app.listen(PORT,()=>{
+    console.log(`server is runnig at ${PORT}`);
 });
