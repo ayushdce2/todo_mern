@@ -3,7 +3,7 @@ import {ToastContainer} from "react-toastify";
 import {Link} from "react-router-dom";
 import { handleError, handleSuccess } from "./utils";
 import { useNavigate } from "react-router-dom";
-
+import "./assets/login.css";
 function Login(){
     const [logininfo, setLogininfo] = useState({email:"",password:""});
     const navigate = useNavigate();
@@ -56,15 +56,20 @@ function Login(){
 
     return(
         <>
-            <form onSubmit={handleLogin}>
-           
-            <input type="text" name="email" autoFocus placeholder="email" onChange={handleChange} value={logininfo.email}/>
-            <input type="text" name="password" autoFocus placeholder="password" onChange={handleChange} value={logininfo.password}/>
-            <button>Login</button>
-            </form>
+            <div className="login_wrap">
+            <div className="login-container">
+                <label>LOGIN</label>
+                <form onSubmit={handleLogin} className="login_form">
+                    <input type="text" name="email" autoFocus placeholder="email" onChange={handleChange} value={logininfo.email}/>
+                    <input type="text" name="password" autoFocus placeholder="password" onChange={handleChange} value={logininfo.password}/>
+                    
+                    <button className="button-9" role="button">Login</button>
+                </form>
             <br/>
-            <Link to="/signup">SignUp</Link>
+            <Link to="/signup" className="bottomLabel">Click to SignUp </Link>
             <ToastContainer/>
+            </div>
+            </div>
         </>
     )
 }

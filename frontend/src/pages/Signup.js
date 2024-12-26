@@ -3,6 +3,7 @@ import {ToastContainer} from "react-toastify";
 import {Link} from "react-router-dom";
 import { handleError, handleSuccess } from "./utils";
 import { useNavigate } from "react-router-dom";
+import "./assets/signup.css";
 
 function Signup(){
     const [signupinfo, setSignupinfo] = useState({name:"",email:"",password:""});
@@ -53,15 +54,22 @@ function Signup(){
 
     return(
         <>
-            <form onSubmit={handleSignup}>
+        <div className="signup_wrap">
+            <div className="signup-container">
+                <label>SignUp</label>
+            <form onSubmit={handleSignup} className="signup_form">
             <input type="text" name="name" autoFocus placeholder="name" onChange={handleChange} value={signupinfo.name}/>
             <input type="text" name="email" autoFocus placeholder="email" onChange={handleChange} value={signupinfo.email}/>
             <input type="text" name="password" autoFocus placeholder="password" onChange={handleChange} value={signupinfo.password}/>
-            <button>SignUp</button>
+            
+            <button className="button-9" role="button">SignUp</button>
             </form>
             <br/>
-            <Link to="/login">Login</Link>
+            <Link to="/login" className="bottomLabel">Click to Login</Link>
             <ToastContainer/>
+            </div>
+
+            </div>
         </>
     )
 }
