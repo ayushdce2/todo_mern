@@ -23,7 +23,7 @@ function Signup(){
             return handleError("enter all details");
         }
         try{
-            const response = await fetch('https://todo-mern-back-kxky.onrender.com//auth/signup', {
+            const response = await fetch('https://todo-mern-back-kxky.onrender.com/auth/signup', {
                 method: 'POST',
                 headers: {
                     "content-type" : "application/json"
