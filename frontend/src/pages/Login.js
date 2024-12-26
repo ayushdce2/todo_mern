@@ -23,7 +23,7 @@ function Login(){
             return handleError("enter all details");
         }
         try{
-            const response = await fetch('http://localhost:8080/auth/login', {
+            const response = await fetch('https://todo-mern-back-kxky.onrender.com/auth/login', {
                 method: 'POST',
                 headers: {
                     "content-type" : "application/json"
