@@ -50,16 +50,15 @@ function Home(){
             <p>{loggedInUser}</p>
             <button onClick={handleLogout}>LogOut</button>
             <hr/>
-             {
-                products && products?.map((item, index) => {
-                    return (
-                        <div key={index}>
-                            <p>{item.name} - Rs. {item.price}</p>
-                            
-                        </div>
-                    );
-                })
-            }
+            {products.length === 0 ? (
+                <p>Data loading...</p>
+            ) : (
+                products.map((item, index) => (
+                    <div key={index}>
+                        <p>{item.name} - Rs. {item.price}</p>
+                    </div>
+                ))
+            )}
             <ToastContainer/>
         </>
     )
