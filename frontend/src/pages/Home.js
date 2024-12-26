@@ -2,6 +2,7 @@ import react,{useEffect,useState} from "react";
 import {useNavigate} from "react-router-dom";
 import { handleError, handleSuccess } from "./utils";
 import { ToastContainer } from "react-toastify";
+import "./assets/home.css";
 
 function Home(){
     const [loggedInUser, setLoggedInUser] = useState("");
@@ -45,12 +46,44 @@ function Home(){
         },1000)
 
     }
+    const handlenotesAdd = (e)=>{
+        e.preventDefault();
+        console.log("handlenotesAdd");
+    }
     return(
         <>
-            <p>{loggedInUser}</p>
-            <button onClick={handleLogout}>LogOut</button>
-            <hr/>
-            {products.length === 0 ? (
+        <div className="home_wrap">
+
+            <div className="home_topbar">
+                <div className="home_name">
+                    <p>{loggedInUser}</p>
+                </div>
+                <div className="home_logout">
+                    <button onClick={handleLogout}>LogOut</button>
+                </div>
+            </div>
+
+               <form onSubmit={handlenotesAdd}>
+                   <div className="home_contenttop">
+                        <textarea placeholder="Add Notes here . .  ." ></textarea>
+                    
+                        <button>Add</button>
+                   </div>
+                </form>
+            
+            <div className="home_contentmain">
+                <ul>
+                    <li className="todo_unit">
+                        <input type="checkbox"/>
+                        <p>This is sample notes 1 : demo content here demo content here demo content here demo content here demo content here demo content here demo content here demo content here demo content here demo content here demo content here demo content here demo content here demo content here demo content here demo content here </p>
+                        <button>Del</button>
+                        <button>Edit</button>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+            {/* {products.length === 0 ? (
                 <p>Data loading...</p>
             ) : (
                 
@@ -59,11 +92,9 @@ function Home(){
                         <p>{item.name} - Rs. {item.price}</p>
                     </div>
                 ))
-            )}
-            <div>
-                
-            </div>
+            )} */}
             <ToastContainer/>
+            </div>
         </>
     )
 }
