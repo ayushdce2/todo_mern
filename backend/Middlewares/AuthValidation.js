@@ -32,7 +32,27 @@ const loginvalidation = (req,res,next)=>{
     next();
 }
 
+const todoAddValidation = (req,res,next)=>{
+    // console.log("todoAddValidation middlewares",req.body);
+    const schema = Joi.object({
+        
+        // description: Joi.string().email().required(),
+        description: Joi.string().min(4).max(300).required()
+    })
+
+    const {error} = schema.validate(req.body);
+
+    if(error){
+        return res.status(400).json({message: "Bad request validation", error})
+    }
+
+
+    next();
+}
+
 module.exports = {
     signupvalidation,
-    loginvalidation
+    loginvalidation,
+    todoAddValidation
+    
 }

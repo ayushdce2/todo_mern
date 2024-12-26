@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const {signupvalidation, loginvalidation} = require("../Middlewares/AuthValidation");
+const {signupvalidation, loginvalidation, todoAddValidation} = require("../Middlewares/AuthValidation");
 
-const {signup,login} = require("../Controllers/AuthController");
+const {signup,login,todoAdd} = require("../Controllers/AuthController");
+// const {getTodos, addTodo, deleteTodo, updateTodo} = require("../Controllers/Todo");
 
 router.post("/login",loginvalidation, login);
 router.post("/signup",signupvalidation, signup);
+router.post("/todoADD",todoAddValidation, todoAdd);
 
 
 module.exports  = router;

@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const AuthRouter = require("./Routes/AuthRouter");
 const ProductRouter = require("./Routes/ProductRouter");
+const TodoAll = require("./Routes/TodoAll");
 
 require("dotenv").config();
 require('./Models/db');
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use("/auth", AuthRouter);
 app.use("/products", ProductRouter);
+app.use("/todoall", TodoAll);
 
 app.listen(PORT,()=>{
     console.log(`server is runnig at ${PORT}`);

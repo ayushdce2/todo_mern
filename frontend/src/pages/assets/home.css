@@ -59,10 +59,11 @@ body{
 
 }
 .todo_unit p{
-    width: 90%;
+    width: 80%;
     white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 0.5rem;
 }
 .todo_unit button{
     background-color: #fff;
