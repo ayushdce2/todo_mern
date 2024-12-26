@@ -53,12 +53,12 @@ function Home(){
             {products.length === 0 ? (
                 <p>Data loading...</p>
             ) : (
-                console.log(products,"products")
-                // products.map((item, index) => (
-                //     <div key={index}>
-                //         <p>{item.name} - Rs. {item.price}</p>
-                //     </div>
-                // ))
+                
+                products.map((item, index) => (
+                    <div key={index}>
+                        <p>{item.name} - Rs. {item.price}</p>
+                    </div>
+                ))
             )}
             <ToastContainer/>
         </>
